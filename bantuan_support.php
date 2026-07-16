@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 require_once 'config.php';
 
@@ -248,14 +248,10 @@ if ($is_logged_in) {
             </svg>
             <span style="-webkit-text-fill-color:transparent;background:linear-gradient(135deg,#10b981,#f59e0b);-webkit-background-clip:text;font-weight:700;">Smart Event Campus</span>
         </a>
-        <div class="nav-links">
-            <a href="index.php" class="btn btn-outline" style="font-size:0.9rem;padding:0.5rem 1rem;"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-        </div>
     </nav>
 
     <div class="cs-page-wrap">
         <?php if (!$is_logged_in): ?>
-            <!-- Form Mulai Chat -->
             <div class="cs-auth-card">
                 <h2><i class="fa-solid fa-headset" style="color:#10b981;"></i> Pusat Bantuan CS</h2>
                 <p>Masukkan nama Anda untuk memulai obrolan baru dengan tim Customer Service kami.</p>
@@ -279,16 +275,20 @@ if ($is_logged_in) {
                 <div class="cs-divider">sudah punya ID obrolan?</div>
 
                 <form method="POST" action="">
-                    <div style="display:flex;gap:0.6rem;">
-                        <input type="text" name="existing_cs_id" class="form-control" placeholder="Masukkan ID (CS-XXXXXXXX)" required style="flex:1;">
-                        <button type="submit" class="btn btn-outline" style="white-space:nowrap;padding:0.7rem 1rem;">
-                            <i class="fa-solid fa-arrow-right"></i> Lanjut
-                        </button>
+                    <div style="display:flex; flex-direction:column; gap:0.6rem;">
+                        <input type="text" name="existing_cs_id" class="form-control" placeholder="Masukkan ID (CS-XXXXXXXX)" required>
+                        <div style="display:flex; gap:0.6rem;">
+                            <a href="index.php" class="btn btn-outline" style="flex:1; text-align:center; padding:0.7rem 0; display:flex; justify-content:center; align-items:center; gap:0.4rem; text-decoration:none;">
+                                <i class="fa-solid fa-arrow-left"></i> Kembali
+                            </a>
+                            <button type="submit" class="btn btn-primary" style="flex:1; padding:0.7rem 0; display:flex; justify-content:center; align-items:center; gap:0.4rem;">
+                                Lanjut <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
         <?php else: ?>
-            <!-- Jendela Chat -->
             <div class="cs-chat-card">
                 <div class="cs-chat-header">
                     <div>
@@ -301,9 +301,14 @@ if ($is_logged_in) {
                         </div>
                         <div style="color:#64748b;font-size:0.78rem;margin-top:0.3rem;">Simpan ID ini jika ingin melanjutkan obrolan nanti.</div>
                     </div>
-                    <a href="bantuan_support.php?action=logout" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;border:1px solid rgba(255,255,255,0.2);border-radius:0.5rem;color:#94a3b8;text-decoration:none;font-size:0.85rem;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#94a3b8';">
-                        <i class="fa-solid fa-right-from-bracket"></i> Akhiri
-                    </a>
+                    <div style="display:flex; gap:0.5rem; align-items:center;">
+                        <a href="index.php" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;border:1px solid rgba(255,255,255,0.2);border-radius:0.5rem;color:#94a3b8;text-decoration:none;font-size:0.85rem;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='#10b981';this.style.color='#10b981';" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#94a3b8';">
+                            <i class="fa-solid fa-arrow-left"></i> Kembali
+                        </a>
+                        <a href="bantuan_support.php?action=logout" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;border:1px solid rgba(255,255,255,0.2);border-radius:0.5rem;color:#94a3b8;text-decoration:none;font-size:0.85rem;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='#ef4444';this.style.color='#ef4444';" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#94a3b8';">
+                            <i class="fa-solid fa-right-from-bracket"></i> Akhiri
+                        </a>
+                    </div>
                 </div>
 
                 <div class="cs-messages-area" id="chatMessages">
